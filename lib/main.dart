@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rabbit_music_app/api/hello.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: '兔子音乐'),
+      home: const MyHomePage(title: 'Rabbit Music'),
     );
   }
 }
@@ -50,7 +51,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  String message = '兔子音乐';
+  String message = '兔兔音乐';
 
   void _incrementCounter() {
     setState(() {
@@ -65,6 +66,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _fetchData() {
     print('按钮点击了');
+    sayHello().then((value) => {
+      setState(() { message = value; })
+    });
   }
 
   final ButtonStyle buttonStyle =
